@@ -6,34 +6,29 @@
   <style>
     body {
       margin: 0;
-      background: #0a0a0a;
-      color: #eee;
+      background: #000;
+      color: white;
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     /* HEADER */
     header {
+      padding: 20px;
       text-align: center;
-      padding: 60px 20px 30px;
+      border-bottom: 1px solid #111;
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 20px;
       margin: 0;
-      letter-spacing: 1px;
-    }
-
-    p {
-      color: #aaa;
-      margin-top: 10px;
     }
 
     /* HAMBURGER */
     .menu-icon {
       position: fixed;
-      top: 20px;
-      left: 20px;
-      font-size: 28px;
+      top: 15px;
+      right: 15px;
+      font-size: 24px;
       cursor: pointer;
       z-index: 1000;
     }
@@ -42,64 +37,44 @@
     .menu {
       position: fixed;
       top: 0;
-      left: -220px;
-      width: 220px;
+      right: -200px;
+      width: 200px;
       height: 100%;
       background: #111;
-      padding-top: 80px;
+      padding-top: 60px;
       transition: 0.3s;
-      box-shadow: 5px 0 20px rgba(0,0,0,0.5);
     }
 
     .menu a {
       display: block;
-      padding: 15px 20px;
-      color: #eee;
+      padding: 15px;
+      color: white;
       text-decoration: none;
-      font-size: 16px;
-    }
-
-    .menu a:hover {
-      background: #222;
     }
 
     .menu.open {
-      left: 0;
+      right: 0;
     }
 
-    /* GALLERY */
+    /* GALLERY GRID */
     .gallery {
       display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 12px;
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding: 16px;
     }
 
     .gallery img {
       width: 100%;
-      border-radius: 8px;
+      border-radius: 16px;
+      display: block;
       cursor: pointer;
       transition: 0.3s;
     }
 
-    .gallery img:first-child {
-      grid-row: span 2;
-    }
-
     .gallery img:hover {
-      transform: scale(1.02);
-      opacity: 0.85;
-    }
-
-    /* CONTACT */
-    #contact {
-      max-width: 600px;
-      margin: 60px auto;
-      padding: 30px;
-      border-top: 1px solid #222;
-      text-align: center;
+      transform: scale(1.03);
+      opacity: 0.9;
     }
 
     /* LIGHTBOX */
@@ -110,25 +85,20 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.95);
+      background: black;
       justify-content: center;
       align-items: center;
     }
 
     .lightbox img {
-      max-width: 92%;
-      max-height: 92%;
-      border-radius: 10px;
+      max-width: 95%;
+      max-height: 95%;
     }
 
     /* MOBILE */
     @media (max-width: 600px) {
       .gallery {
         grid-template-columns: 1fr;
-      }
-
-      .gallery img:first-child {
-        grid-row: span 1;
       }
     }
   </style>
@@ -140,18 +110,17 @@
   <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
   <div id="menu" class="menu">
-    <a href="#portfolio" onclick="toggleMenu()">Portfolio</a>
-    <a href="#contact" onclick="toggleMenu()">Contact</a>
+    <a href="#">Portfolio</a>
+    <a href="#contact">Contact</a>
   </div>
 
   <!-- HEADER -->
   <header>
     <h1>Ngoc Son Miniature Studio</h1>
-    <p>High Contrast • NMM • Display Level</p>
   </header>
 
-  <!-- PORTFOLIO -->
-  <div id="portfolio" class="gallery">
+  <!-- GALLERY -->
+  <div class="gallery">
     <img src="mini1.jpg" onclick="openLightbox(this)">
     <img src="mini2.jpg" onclick="openLightbox(this)">
     <img src="mini3.jpg" onclick="openLightbox(this)">
@@ -159,8 +128,7 @@
   </div>
 
   <!-- CONTACT -->
-  <div id="contact">
-    <h2>Contact</h2>
+  <div id="contact" style="padding: 30px; text-align:center; border-top:1px solid #111;">
     <p>Instagram: yourname</p>
     <p>Email: your@email.com</p>
   </div>
