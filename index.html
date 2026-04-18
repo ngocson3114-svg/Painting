@@ -4,7 +4,7 @@
   <title>Age of Painting</title>
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Cinzel:wght@600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Cinzel:wght@800&display=swap" rel="stylesheet">
 
   <style>
     body {
@@ -17,14 +17,18 @@
     /* TOP BAR */
     .topbar {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       padding: 15px 20px;
       border-bottom: 1px solid #111;
+      position: sticky;
+      top: 0;
+      background: black;
+      z-index: 1000;
     }
 
     .logo {
-      height: 50px;
+      height: 45px;
     }
 
     .logo img {
@@ -50,7 +54,7 @@
 
     .menu a {
       display: block;
-      padding: 15px 20px;
+      padding: 15px;
       color: white;
       text-decoration: none;
     }
@@ -62,62 +66,51 @@
     /* TITLE */
     .title {
       text-align: center;
-      padding: 30px 20px 10px;
+      padding: 25px 15px 10px;
     }
 
     .main-title {
       font-family: 'Cinzel', serif;
-      font-size: 46px;
+      font-size: 42px;
       font-weight: 800;
-      letter-spacing: 2px;
-      margin: 0;
 
-      /* BRIGHT NMM METAL */
       background: linear-gradient(
         180deg,
-        #ffffff 0%,
-        #fff6d5 15%,
+        #ffffff,
         #ffd700 30%,
         #a67c00 50%,
         #ffd700 70%,
-        #fff6d5 85%,
-        #ffffff 100%
+        #ffffff
       );
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
 
-      /* STRONGER CONTRAST + EDGE */
       text-shadow:
-        0 1px 0 #000,
         0 2px 4px rgba(0,0,0,0.9),
-        0 0 10px rgba(255, 215, 0, 0.25);
+        0 0 10px rgba(255,215,0,0.2);
     }
 
     .subtitle {
       font-size: 13px;
       color: #aaa;
-      margin-top: 10px;
-      letter-spacing: 1px;
+      margin-top: 8px;
     }
 
-    /* GALLERY */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 16px;
-      padding: 16px;
+    /* INSTAGRAM FEED STYLE */
+    .feed {
+      max-width: 600px;
+      margin: auto;
+      padding-bottom: 30px;
     }
 
-    .gallery img {
+    .post {
+      margin-bottom: 25px;
+    }
+
+    .post img {
       width: 100%;
-      border-radius: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.03);
-      opacity: 0.9;
+      display: block;
+      border-radius: 12px;
     }
 
     /* LIGHTBOX */
@@ -140,28 +133,14 @@
 
     /* CONTACT */
     #contact {
-      padding: 40px 20px;
       text-align: center;
+      padding: 40px 20px;
       border-top: 1px solid #111;
-    }
-
-    #contact h2 {
-      margin-bottom: 15px;
-      letter-spacing: 2px;
     }
 
     #contact a {
       color: #ffd700;
       text-decoration: none;
-    }
-
-    #contact a:hover {
-      text-decoration: underline;
-    }
-
-    #contact p {
-      color: #aaa;
-      margin: 6px 0;
     }
   </style>
 </head>
@@ -171,9 +150,8 @@
   <!-- TOP BAR -->
   <div class="topbar">
     <div class="logo">
-      <img src="logo.png" alt="logo">
+      <img src="logo.png">
     </div>
-
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
   </div>
 
@@ -189,24 +167,18 @@
     <div class="subtitle">Miniature • One man Studio</div>
   </div>
 
-  <!-- GALLERY -->
-  <div class="gallery">
-    <img src="mini1.jpg" onclick="openLightbox(this)">
-    <img src="mini2.jpg" onclick="openLightbox(this)">
-    <img src="mini3.jpg" onclick="openLightbox(this)">
-    <img src="mini4.jpg" onclick="openLightbox(this)">
-  </div>
+  <!-- FEED -->
+  <div class="feed" id="feed"></div>
 
   <!-- CONTACT -->
   <div id="contact">
     <h2>CONTACT</h2>
     <p>
-      Instagram: 
       <a href="https://www.instagram.com/ngocson2412" target="_blank">
         @ngocson2412
       </a>
     </p>
-    <p>Email: letc.son@gmail.com</p>
+    <p>letc.son@gmail.com</p>
   </div>
 
   <!-- LIGHTBOX -->
@@ -228,6 +200,44 @@
     function closeLightbox() {
       document.getElementById("lightbox").style.display = "none";
     }
+
+    // YOUR IMAGES
+    const images = [
+      "IMG_3333.jpeg",
+      "IMG_3115.jpeg",
+      "IMG_2970.jpeg",
+      "IMG_2531.jpeg",
+      "IMG_2294.png",
+      "IMG_7659.jpeg",
+      "IMG_1890.jpeg",
+      "IMG_1566.jpeg",
+      "IMG_1348.jpeg",
+      "IMG_1269.jpeg",
+      "IMG_1222.png",
+      "IMG_1225.png",
+      "IMG_1224.png",
+      "IMG_1223.png",
+      "IMG_1077.jpeg",
+      "IMG_0773.jpeg",
+      "IMG_0730.jpeg",
+      "IMG_0507.jpeg",
+      "IMG_0427.jpeg",
+      "IMG_0383.jpeg"
+    ];
+
+    const feed = document.getElementById("feed");
+
+    images.forEach(src => {
+      const post = document.createElement("div");
+      post.className = "post";
+
+      const img = document.createElement("img");
+      img.src = src;
+      img.onclick = () => openLightbox(img);
+
+      post.appendChild(img);
+      feed.appendChild(post);
+    });
   </script>
 
 </body>
