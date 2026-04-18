@@ -71,7 +71,7 @@
 
     .main-title {
       font-family: 'Cinzel', serif;
-      font-size: 42px;
+      font-size: 40px;
       font-weight: 800;
 
       background: linear-gradient(
@@ -96,21 +96,18 @@
       margin-top: 8px;
     }
 
-    /* INSTAGRAM FEED STYLE */
-    .feed {
-      max-width: 600px;
-      margin: auto;
-      padding-bottom: 30px;
+    /* GRID (Instagram profile style) */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
     }
 
-    .post {
-      margin-bottom: 25px;
-    }
-
-    .post img {
+    .grid img {
       width: 100%;
-      display: block;
-      border-radius: 12px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      cursor: pointer;
     }
 
     /* LIGHTBOX */
@@ -167,8 +164,8 @@
     <div class="subtitle">Miniature • One man Studio</div>
   </div>
 
-  <!-- FEED -->
-  <div class="feed" id="feed"></div>
+  <!-- GRID -->
+  <div class="grid" id="grid"></div>
 
   <!-- CONTACT -->
   <div id="contact">
@@ -221,18 +218,13 @@
       "IMG_0383.jpeg"
     ];
 
-    const feed = document.getElementById("feed");
+    const grid = document.getElementById("grid");
 
     images.forEach(src => {
-      const post = document.createElement("div");
-      post.className = "post";
-
       const img = document.createElement("img");
       img.src = src;
       img.onclick = () => openLightbox(img);
-
-      post.appendChild(img);
-      feed.appendChild(post);
+      grid.appendChild(img);
     });
   </script>
 
