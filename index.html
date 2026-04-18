@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Miniature Studio</title>
+  <title>Ngoc Son Miniature Studio</title>
 
   <style>
     body {
       margin: 0;
-      background: black;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
+      background: #0a0a0a;
+      color: #eee;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     /* HEADER */
     header {
-      padding: 40px 20px 20px;
+      text-align: center;
+      padding: 60px 20px 30px;
     }
 
     h1 {
-      margin-bottom: 10px;
+      font-size: 28px;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+
+    p {
+      color: #aaa;
+      margin-top: 10px;
     }
 
     /* HAMBURGER */
@@ -26,7 +33,7 @@
       position: fixed;
       top: 20px;
       left: 20px;
-      font-size: 30px;
+      font-size: 28px;
       cursor: pointer;
       z-index: 1000;
     }
@@ -35,23 +42,25 @@
     .menu {
       position: fixed;
       top: 0;
-      left: -200px;
-      width: 200px;
+      left: -220px;
+      width: 220px;
       height: 100%;
       background: #111;
-      padding-top: 60px;
+      padding-top: 80px;
       transition: 0.3s;
+      box-shadow: 5px 0 20px rgba(0,0,0,0.5);
     }
 
     .menu a {
       display: block;
-      padding: 15px;
-      color: white;
+      padding: 15px 20px;
+      color: #eee;
       text-decoration: none;
+      font-size: 16px;
     }
 
     .menu a:hover {
-      background: #333;
+      background: #222;
     }
 
     .menu.open {
@@ -62,32 +71,38 @@
     .gallery {
       display: grid;
       grid-template-columns: 2fr 1fr;
-      gap: 10px;
+      gap: 12px;
       padding: 20px;
+      max-width: 900px;
+      margin: auto;
     }
 
     .gallery img {
       width: 100%;
+      border-radius: 8px;
       cursor: pointer;
       transition: 0.3s;
     }
 
-    .gallery img:hover {
-      opacity: 0.7;
-    }
-
-    /* MAKE FIRST IMAGE BIG */
     .gallery img:first-child {
       grid-row: span 2;
     }
 
-    /* CONTACT */
-    #contact {
-      padding: 40px 20px;
-      border-top: 1px solid #333;
+    .gallery img:hover {
+      transform: scale(1.02);
+      opacity: 0.85;
     }
 
-    /* LIGHTBOX (click zoom) */
+    /* CONTACT */
+    #contact {
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 30px;
+      border-top: 1px solid #222;
+      text-align: center;
+    }
+
+    /* LIGHTBOX */
     .lightbox {
       display: none;
       position: fixed;
@@ -95,14 +110,26 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.9);
+      background: rgba(0,0,0,0.95);
       justify-content: center;
       align-items: center;
     }
 
     .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
+      max-width: 92%;
+      max-height: 92%;
+      border-radius: 10px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery img:first-child {
+        grid-row: span 1;
+      }
     }
   </style>
 </head>
@@ -119,8 +146,8 @@
 
   <!-- HEADER -->
   <header>
-    <h1>My Miniature Painting Studio</h1>
-    <p>High contrast • NMM • Fantasy miniatures</p>
+    <h1>Ngoc Son Miniature Studio</h1>
+    <p>High Contrast • NMM • Display Level</p>
   </header>
 
   <!-- PORTFOLIO -->
