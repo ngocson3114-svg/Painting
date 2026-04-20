@@ -96,7 +96,7 @@
       margin-top: 8px;
     }
 
-    /* GRID (Instagram profile style) */
+    /* GRID */
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -108,6 +108,14 @@
       aspect-ratio: 1 / 1;
       object-fit: cover;
       cursor: pointer;
+
+      /* blur loading */
+      filter: blur(10px);
+      transition: 0.4s;
+    }
+
+    .grid img.loaded {
+      filter: blur(0);
     }
 
     /* LIGHTBOX */
@@ -198,7 +206,7 @@
       document.getElementById("lightbox").style.display = "none";
     }
 
-    // YOUR IMAGES
+    // YOUR ORIGINAL IMAGES (jpeg/png)
     const images = [
       "IMG_3333.jpeg",
       "IMG_3115.jpeg",
@@ -223,7 +231,17 @@
     images.forEach(src => {
       const img = document.createElement("img");
       img.src = src;
+
+      // lazy load
+      img.loading = "lazy";
+
+      // blur effect
+      img.onload = () => {
+        img.classList.add("loaded");
+      };
+
       img.onclick = () => openLightbox(img);
+
       grid.appendChild(img);
     });
   </script>
